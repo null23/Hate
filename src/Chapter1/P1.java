@@ -1,5 +1,3 @@
-package Chapter1;
-
 import java.util.Stack;
 
 /**
@@ -30,6 +28,15 @@ public class P1 {
         if(this.stackData.isEmpty()){
             throw new RuntimeException("Stack Is Empty");
         }
+    }
+
+    //查询最小元素
+    public int getMin(){
+        if(this.statckMin.isEmpty()){
+            throw new RuntimeException("Stack Is Empty");
+        }
+        int min = this.statckMin.peek();
+        return 0;
     }
 
 }
