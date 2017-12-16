@@ -1,5 +1,3 @@
-package Chapter1;
-
 import java.util.Stack;
 
 /**
