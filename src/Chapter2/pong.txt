@@ -4,3 +4,15 @@
 
               head!=null会让节点遍历至最后一个节点之后的空节点，也就是null
               head.next!=null会让节点停留在最后一个节点
+
+2.查找链表的一半的技巧
+    设置两个节点，都从链表的头结点开始，一个节点每次增加两个，一个节点每次增加一个
+    清楚判断条件即可
+    Node node1 = head;
+    Node node2 = head;
+    while(node2.next != null && node2.next.next != null){
+        node1 = node1.next;
+        node2 = node2.next;
+    }
+    这里node2.next != null判断的是链表节点个数为偶数的时候
+    node2.next.next != null判断的是链表节点个数为奇数的时候
