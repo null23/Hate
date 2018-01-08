@@ -1,5 +1,7 @@
 package Chapter2;
 
+import java.util.HashSet;
+
 /**
  * Created by mikaelw on 01/03/18.
  */
@@ -12,27 +14,23 @@ public class P14 {
         }
     }
 
-    public Node removeValue(Node head, int res){
+    public void removeRep1(Node head){
+        if(head == null){
+            return;
+        }
+        HashSet hashSet = new HashSet();
+        hashSet.add(head.data);
         Node pre = head;
         Node cur = head.next;
-
         while(cur != null){
-            //若头结点的值与目标值相等
-            if(pre.data == res){
-                head = cur;
-                pre = head;
-                cur = pre.next;
-            }
-            //后节点与目标值相等，直接删除
-            if(cur.data == res){
+            if(hashSet.contains(cur.data)){
+                //删除此节点
                 pre.next = cur.next;
             }else{
+                hashSet.add(cur.data);
                 pre = cur;
             }
-
             cur = cur.next;
         }
-
-        return head;
     }
 }

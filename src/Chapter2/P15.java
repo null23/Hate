@@ -9,28 +9,33 @@ import java.util.Queue;
 public class P15 {
     public class Node {
         public int data;
-        private Node left;
-        private Node right;
+        private Node next;
         public Node(int data) {
             this.data = data;
         }
     }
 
-    public Node reverse1(Node head){
-        Queue queue = new LinkedList();
-        inOrderToQueue1(head, queue);
-        if(queue.isEmpty()){
-            return head;
-        }
-        return head;
-    }
+    public Node removeValue(Node head, int res){
+        Node pre = head;
+        Node cur = head.next;
 
-    public void inOrderToQueue1(Node head, Queue queue){
-        if(head == null){
-            return;
+        while(cur != null){
+            //若头结点的值与目标值相等
+            if(pre.data == res){
+                head = cur;
+                pre = head;
+                cur = pre.next;
+            }
+            //后节点与目标值相等，直接删除
+            if(cur.data == res){
+                pre.next = cur.next;
+            }else{
+                pre = cur;
+            }
+
+            cur = cur.next;
         }
-        inOrderToQueue1(head.left, queue);
-        queue.offer(head);
-        inOrderToQueue1(head.right, queue);
+
+        return head;
     }
 }
