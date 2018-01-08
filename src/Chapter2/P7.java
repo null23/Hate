@@ -1,3 +1,5 @@
+package Chapter2;
+
 import java.util.Stack;
 
 /**
@@ -49,6 +51,54 @@ public class P7 {
                 return false;
             }
             cur = cur.next;
+        }
+        return true;
+    }
+
+    //不需要其他多余的数据结构
+    public boolean isPalindrome3(Node head){
+        //左半区
+        Node n1 = head;
+        //右半区(需要逆序)
+        Node n2 = head;
+        while(n2.next != null && n2.next.next != null){
+            n1 = n1.next;
+            n2 = n2.next.next;
+        }
+        //n2从倒数第一个/倒数第二个的位置变为右半区开头
+        n2 = n1.next;
+        n1.next = null;
+        Node n3 = null;
+        //翻转链表
+        while(n2 != null){
+            n3 = n2.next;
+            n2.next = n1;
+            n1 = n2;
+            n2 = n3;
+        }
+
+        //保存最后一个节点，现在n1是最后一个节点
+        n3 = n1;
+        //左边第一个节点，现在n2是头结点
+        n2 = head;
+
+        //比较回文结构
+        while(n2 != null && n2 != null){
+            if(n1.next != n2.next){
+                return false;
+            }
+            n1 = n1.next;
+            n2 = n2.next;
+        }
+
+        n1 = n3.next;
+        n3.next = null;
+
+        while(n1 != null){
+            n2 = n1.next;
+            n1.next = n3;
+            n3 = n1;
+            n1 = n2;
         }
         return true;
     }
