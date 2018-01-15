@@ -28,7 +28,7 @@ public class P2 {
         }
         //打印既不是最左又不是最右的叶子结点
         printLeafNotInMap(head, 0, edgeMap);
-        //打印所有右半区的最右结点
+        //逆时针打印所有右半区的最右结点
         for(int i = edgeMap.length - 1; i > 0; i--){
             if(edgeMap[i][0] != edgeMap[i][1]){
                 System.out.println(edgeMap[i][1]);
