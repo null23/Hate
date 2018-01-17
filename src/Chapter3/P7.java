@@ -2,7 +2,7 @@ package Chapter3;
 /**
  * Created by mikaelw on 01/16/18.
  */
-//最大搜索二叉子树
+//最大搜索二叉子树(二叉搜索树：Binary Search Tree，简称BST)
 public class P7 {
     public class Node{
         public int data;
@@ -30,6 +30,7 @@ public class P7 {
         Node right = head.right;
         //Node左侧的最大搜索树
         Node lBST = postOrder(left, record);
+        //record[0]纪录搜索树的大小
         int lSize = record[0];
         //第n-1次的左子树最小的值，就是上一次左侧最小
         int lMin = record[1];
